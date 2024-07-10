@@ -17,7 +17,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 20px;
+            padding: 10px ; /* Increased left and right padding */
             background-color: #1a1a1a;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
             position: fixed;
@@ -40,6 +40,7 @@
 
         .navbar .nav-links li {
             margin-left: 20px;
+            padding-right: 20px;
         }
 
         .navbar .nav-links a {
@@ -57,10 +58,10 @@
             display: none;
             flex-direction: column;
             cursor: pointer;
-            margin-left: 20px;
         }
 
         .menu-toggle div {
+            padding-right: 20px;
             width: 25px;
             height: 3px;
             background-color: #fff;
@@ -185,14 +186,8 @@
 
         @media (max-width: 768px) {
             .navbar {
+                padding: 10px 20px; /* Reduced padding for mobile */
                 flex-wrap: wrap;
-                padding: 10px;
-            }
-
-            .navbar .logo {
-                flex: 1;
-                display: flex;
-                justify-content: center;
             }
 
             .menu-toggle {
@@ -280,8 +275,8 @@
     <div id="home" class="section home-section">
         <div class="content">
             <h1>Grand Theft Auto VI</h1>
-            <p>Fan made narrative token on Ethereum Chain</p>
-            <a href="#" class="button">Buy on Uniswap</a>
+            <p>Fan made narrative token on Solana Chain</p>
+            <a href="#" class="button">Buy on Pumpfun</a>
             <a href="#" class="button">Dextool Chart</a>
         </div>
         <div class="platforms">
