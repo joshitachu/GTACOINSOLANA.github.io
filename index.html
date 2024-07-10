@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GTA6 Coin</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #000;
+            color: #fff;
+            scroll-behavior: smooth;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #1a1a1a;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar .logo img {
+            height: 40px;
+        }
+
+        .navbar .nav-links {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .navbar .nav-links li {
+            margin-left: 20px;
+        }
+
+        .navbar .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .navbar .nav-links a:hover {
+            color: #0af;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            margin-left: 20px;
+        }
+
+        .menu-toggle div {
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        .section {
+            padding: 60px 20px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .home-section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: url('tumblr_3735ef4616fb34bfae88f6419b6ef8bc_4418c291_540.gif') no-repeat center center;
+            background-size: cover;
+            padding: 20px;
+        }
+
+        .home-section .content {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .home-section .content h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .home-section .content p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: #0af;
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #08c;
+        }
+
+        .platforms {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .platforms img {
+            margin: 10px;
+            height: 40px;
+            transition: transform 0.3s;
+        }
+
+        .platforms img:hover {
+            transform: scale(1.1);
+        }
+
+        .tokenomics .supply, .tokenomics .liquidity, .tokenomics .buy {
+            margin-bottom: 30px;
+        }
+
+        .tokenomics .supply h3, .tokenomics .liquidity h3, .tokenomics .buy h3 {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+
+        .tokenomics .supply p, .tokenomics .liquidity p, .tokenomics .buy p {
+            font-size: 18px;
+        }
+
+        .phases {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .phase {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            margin: 10px;
+        }
+
+        .phase h2 {
+            font-size: 24px;
+            color: #0af;
+            margin-bottom: 10px;
+        }
+
+        .phase ul {
+            list-style: none;
+            padding: 0;
+            font-size: 16px;
+        }
+
+        .phase ul li {
+            margin-bottom: 10px;
+        }
+
+        .section h1 {
+            color: #0af;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-wrap: wrap;
+                padding: 10px;
+            }
+
+            .navbar .logo {
+                flex: 1;
+                display: flex;
+                justify-content: center;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .navbar .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background-color: #1a1a1a;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+                padding: 20px 0;
+            }
+
+            .navbar .nav-links.active {
+                display: flex;
+            }
+
+            .navbar .nav-links li {
+                margin: 10px 0;
+                text-align: center;
+            }
+
+            .navbar .nav-links a {
+                font-size: 14px;
+            }
+
+            .home-section .content h1 {
+                font-size: 28px;
+            }
+
+            .home-section .content p {
+                font-size: 16px;
+            }
+
+            .button {
+                padding: 8px 16px;
+                margin: 5px;
+            }
+
+            .platforms img {
+                height: 30px;
+            }
+
+            .phases {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .phase {
+                width: 100%;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .navbar .nav-links {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <a href="#home"><img src="logo.jpeg" alt="Logo"></a>
+        </div>
+        <div class="menu-toggle" id="menu-toggle">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#tokenomics">Tokenomics</a></li>
+            <li><a href="#narrative">Narrative</a></li>
+            <li><a href="#twitter">Twitter</a></li>
+            <li><a href="#telegram">Telegram</a></li>
+        </ul>
+    </div>
+
+    <div id="home" class="section home-section">
+        <div class="content">
+            <h1>Grand Theft Auto VI</h1>
+            <p>Fan made narrative token on Ethereum Chain</p>
+            <a href="#" class="button">Buy on Uniswap</a>
+            <a href="#" class="button">Dextool Chart</a>
+        </div>
+        <div class="platforms">
+            <img src="dexscreener.png" alt="DexScreener">
+            <img src="pumpfun.png" alt="Pumpfun">
+            <img src="solscan.png" alt="Solscan">
+        </div>
+    </div>
+
+    <div id="tokenomics" class="section tokenomics">
+        <div class="content">
+            <h1>Tokenomics</h1>
+            <p>Welcome to the Tokenomics section.</p>
+
+            <div class="supply">
+                <img src="tumblr_8544f4ece265a29fb8bb95f7978f76c6_6fe6aead_500.webp" alt="Tokenomics Image 1">
+                <h3>Total Supply</h3>
+                <p>Total supply is 100 million</p>
+            </div>
+
+            <div class="liquidity">
+                <img src="637a6267b61af28329c6504770468498.gif" alt="Tokenomics Image 2">
+                <h3>Liquidity</h3>
+                <p>Liquidity will be burned at a market cap of only 120k</p>
+            </div>
+
+            <div class="buy">
+                <img src="200w.gif" alt="Tokenomics Image 3">
+                <h3>Buy And Sell Tax</h3>
+                <p>No tax. Community runs itself</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="narrative" class="section">
+        <div class="content">
+            <h1>Narrative</h1>
+            <p>$GTA6 Coin is designed to ride the wave of excitement around Grand Theft Auto VI. Our mission? To skyrocket as soon as the trailer 2 & game drops! 
+            10% of supply will go to Rockstar Games.</p>
+        </div>
+    </div>
+
+    <div id="phases" class="section">
+        <div class="content">
+            <h1>Phases</h1>
+            <div class="phases">
+                <div class="phase">
+                    <h2>Phase 1</h2>
+                    <ul>
+                        <li>Launch</li>
+                        <li>CoinGecko/Coinmarketcap Listings</li>
+                        <li>690+ Holders</li>
+                        <li>Cultivate the $GTA6 COIN ARMY</li>
+                    </ul>
+                </div>
+                <div class="phase">
+                    <h2>Phase 2</h2>
+                    <ul>
+                        <li>Partnerships</li>
+                        <li>Guerilla Marketing (we’ll be everywhere)</li>
+                        <li>Exclusive holder content/community hang outs</li>
+                        <li>2500+ holders</li>
+                        <li>CEX Listings</li>
+                    </ul>
+                </div>
+                <div class="phase">
+                    <h2>Phase 3</h2>
+                    <ul>
+                        <li>Utility partnerships</li>
+                        <li>Multichain bridging</li>
+                        <li>Elon custom Tesla</li>
+                        <li>T1 Exchange Listings</li>
+                        <li>10,000+ holders</li>
+                        <li>Flip BTC</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            var navLinks = document.getElementById('nav-links');
+            navLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
